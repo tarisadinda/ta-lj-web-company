@@ -1,0 +1,9 @@
+.column {
+    &:first-child {
+        border-top-left-radius: 15px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 15px;
+    }
+}
