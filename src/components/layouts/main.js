@@ -15,7 +15,7 @@ export default function LayoutMain({ children }) {
         <main
           style={{
             margin: '0px 50px 0px 265px',
-            padding: '100px 0px'
+            padding: '100px 0px 50px 0px'
           }}
         >
           {children}
