@@ -1,6 +1,6 @@
 .row {
     display: flex;
-    justify-content: space-between;
+    column-gap: 100px;
 }
 
 .applicantInfo {
@@ -27,6 +27,13 @@
     width: 300px;
     display: grid;
     row-gap: 5px;
+}
+
+.editStatus {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    margin-bottom: 10px;
 }
 
 .date {
