@@ -5,8 +5,8 @@ import Drawer from '@mui/material/Drawer'
 import AppBar from '@mui/material/AppBar'
 import CssBaseline from '@mui/material/CssBaseline'
 import Toolbar from '@mui/material/Toolbar'
+import Collapse from '@mui/material/Collapse'
 import List from '@mui/material/List'
-import Typography from '@mui/material/Typography'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
@@ -15,14 +15,29 @@ import InboxIcon from '@mui/icons-material/MoveToInbox'
 import MailIcon from '@mui/icons-material/Mail'
 import LogoutIcon from '@mui/icons-material/Logout'
 import PersonIcon from '@mui/icons-material/Person'
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+import Link from 'next/link'
 
 const drawerWidth = 240
 
+const bottomMenu = [
+  {
+      label: 'Profil Saya',
+      link: '#'
+  },
+  {
+      label: 'Logout',
+      link: '/login'
+  }
+]
+
 export default function Navbar() {
   const [activeIndex, setActiveIndex] = React.useState(null)
+  const [open, setOpen] = React.useState(false)
 
-  const selectBtn = (index) => {
-    setActiveIndex(index)
+  const handleClick = () => {
+    setOpen(!open)
   }
 
   return (
@@ -43,23 +58,45 @@ export default function Navbar() {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }} className={styles.menuWrap}>
           <List>
-            {['Dashboard', 'Data Pelamar', 'Cari Karyawan'].map((text, index) => (
-              <ListItem key={index} disablePadding onClick={() => selectBtn(index)}>
-                <ListItemButton selected={activeIndex === index}>
-                  <ListItemText primary={text} />
+            <Link href='/dashboard'>
+              <ListItemButton>
+                <ListItemText primary='Dashboard' />
+              </ListItemButton>
+            </Link>
+            <ListItemButton onClick={handleClick}>
+                <ListItemText primary="Pekerjaan" />
+                {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemText primary="Daftar Lowongan" />
                 </ListItemButton>
-              </ListItem>
-            ))}
+                <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemText primary="Kategori" />
+                </ListItemButton>
+                </List>
+            </Collapse>
+            <Link href='/applicant-list'>
+              <ListItemButton>
+                <ListItemText primary='Data Pelamar' />
+              </ListItemButton>
+            </Link>
+            <ListItemButton>
+              <ListItemText primary='Cari Karyawan' />
+            </ListItemButton>
           </List>
           <List>
-            {['Profil Saya', 'Logout'].map((text, index) => (
+            {bottomMenu.map((text, index) => (
               <ListItem key={index} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {text === 'Logout' ? <LogoutIcon fontSize="small" /> : <PersonIcon fontSize="small" />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
+                <Link href={text.link} className={styles.link}>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            {text.label === 'Logout' ? <LogoutIcon fontSize="small" /> : <PersonIcon fontSize="small" />}
+                        </ListItemIcon>
+                        <ListItemText primary={text.label} />
+                    </ListItemButton>
+                </Link>
               </ListItem>
             ))}
           </List>
