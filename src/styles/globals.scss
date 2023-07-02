@@ -23,10 +23,14 @@ body {
   width: 100%;
 }
 
-// a {
-//   color: inherit;
-//   text-decoration: none;
-// }
+a {
+  color: initial;
+  text-decoration: none;
+
+  &:hover, &:active {
+    color: initial;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   html {
