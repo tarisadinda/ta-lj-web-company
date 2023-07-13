@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '@/styles/DetailApplicant.module.scss'
+import styles from '@/styles/pages/applicant-list/DetailApplicant.module.scss'
 import cn from 'classnames'
 import BlueCard from "@/components/blue-card"
 import LayoutMain from "@/components/layouts/main"
