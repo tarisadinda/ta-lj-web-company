@@ -23,7 +23,7 @@ const drawerWidth = 240
 
 const bottomMenu = [
   {
-      label: 'Profil Saya',
+      label: 'Profil Company',
       link: '#'
   },
   {
