@@ -1,5 +1,4 @@
 import { Button } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
 import { styled } from '@mui/material/styles'
 
 const IconButtonStyled = styled(Button)(() => ({
@@ -14,10 +13,14 @@ const IconButtonStyled = styled(Button)(() => ({
     }
 }))
 
-export default function CustomIconButton() {
+export default function CustomIconButton({icon, text, ...props}) {
     return(<>
-        <IconButtonStyled variant="outlined" startIcon={<EditIcon />}>
-            Ubah Status
+        <IconButtonStyled 
+            variant="outlined" 
+            startIcon={icon}
+            {...props}
+        >
+            {text}
         </IconButtonStyled>
     </>)
 }
