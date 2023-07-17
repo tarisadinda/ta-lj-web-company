@@ -1,3 +1,21 @@
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;  
+}
+
+.modalTitle {
+    font-size: $font-24;
+}
+
+.modalBtn {
+    display: flex;
+    column-gap: 15px;
+    width: 250px;
+}
+
 .row {
     display: flex;
     column-gap: 100px;
@@ -26,7 +44,13 @@
     margin-top: 20px;
     width: 300px;
     display: grid;
-    row-gap: 5px;
+    row-gap: 10px;
+}
+
+.btnIcon {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
 }
 
 .editStatus {

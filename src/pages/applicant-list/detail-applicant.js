@@ -3,34 +3,30 @@ import styles from '@/styles/pages/applicant-list/DetailApplicant.module.scss'
 import cn from 'classnames'
 import BlueCard from "@/components/blue-card"
 import LayoutMain from "@/components/layouts/main"
-import { Avatar, Dialog, DialogTitle, IconButton } from '@mui/material'
+import { Avatar, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material'
 import { CustomChip } from '@/components/chip'
 import CustomIconButton from '@/components/icon-button'
 import CloseIcon from '@mui/icons-material/Close'
+import EditIcon from '@mui/icons-material/Edit'
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile'
 
-const ModalEditStatus = () => {
-    const [openModal, setOpenModal] = useState(true)
-    const handleClose = () => {
-        setOpenModal(!openModal)
-    }
-
+const ModalEditStatus = ({open, handleClose}) => {
     return(<>
         <Dialog 
-            open={openModal}
+            open={open}
             handleClose={handleClose}
             PaperProps={{
                 sx: {
                     width: '574px',
-                    height: '500px',
+                    height: 'max-content',
                     borderRadius: '7px'
                 }
             }}
         >
             <DialogTitle className={styles.title}>
-                Edit Status Lamaran
+                <span className={styles.modalTitle}><b>Edit Status Lamaran</b></span>
                 <IconButton 
                     onClick={handleClose}
-                    className={styles.close}
                     sx={{
                         color: (theme) => theme.palette.grey[500],
                     }}
@@ -38,10 +34,31 @@ const ModalEditStatus = () => {
                     <CloseIcon />
                 </IconButton>
             </DialogTitle>
+            <DialogContent dividers>
+                <p>Status Seleksi</p>
+                <select className="form-select" aria-label="Pilih Status Seleksi">
+                    <option selected>Open this select menu</option>
+                    <option value="1">Dalam Review</option>
+                    <option value="2">Terpilih</option>
+                    <option value="3">Tidak Sesuai</option>
+                </select>
+                <div className='mt-4 d-flex justify-content-end'>
+                    <div className={styles.modalBtn}>
+                        <button className='btn btn-ghost blue'>Batal</button>
+                        <button className='btn btn-primary blue'>Update</button>
+                    </div>
+                </div>
+            </DialogContent>
         </Dialog>
     </>)
 }
 export default function DetailApplicant() {
+    const [openModalStatus, setOpenModalStatus] = React.useState(false)
+
+    const handleStatusModal = () => {
+        setOpenModalStatus(!openModalStatus)
+    }
+
     return(<>
     <div className={styles.row}>
         <div>
@@ -57,17 +74,23 @@ export default function DetailApplicant() {
                     </div>
                 </div>
                 <div className={styles.btnSection}>
-                    <button className='btn btn-primary blue'>CV - Budi Pranowo</button>
-                    <button className='btn btn-primary blue'>Sertifikat Junior Mobile Developer</button>
+                    <button className={cn(styles.btnIcon, 'btn btn-primary blue')}>
+                        <InsertDriveFileIcon />
+                        CV - Budi Pranowo
+                    </button>
+                    <button className={cn(styles.btnIcon, 'btn btn-primary blue')}>
+                        <InsertDriveFileIcon />
+                        Sertifikat Junior Mobile Developer
+                    </button>
                 </div>
             </BlueCard>
         </div>
         <div>
             <div className={styles.editStatus}>
                 <h4 className='mb-0'><b>Status Lamaran</b></h4>
-                <CustomIconButton />
+                <CustomIconButton onClick={handleStatusModal} icon={<EditIcon />} text='Ubah Status' />
             </div>
-            <CustomChip label="Dalam Review" bgColor='#1C55FF' />
+            <CustomChip label="Dalam Review" bgcolor='#F1C93A' />
         </div>
     </div>
     <div className='mt-5'>
@@ -80,7 +103,7 @@ export default function DetailApplicant() {
             <p>Fulltime - WFO</p>
         </BlueCard>
     </div>
-    <ModalEditStatus />
+    <ModalEditStatus open={openModalStatus} handleClose={handleStatusModal} />
     </>)
 }
 
