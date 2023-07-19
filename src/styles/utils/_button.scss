@@ -54,7 +54,7 @@
         background-color: transparent;
         border: none;
 
-        &:hover {
+        &:active, &:hover {
             background-color: $blue-1;
             color: $light;
         }
