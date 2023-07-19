@@ -82,9 +82,11 @@ export default function Navbar() {
                 <ListItemText primary='Data Pelamar' />
               </ListItemButton>
             </Link>
-            <ListItemButton>
-              <ListItemText primary='Cari Karyawan' />
-            </ListItemButton>
+            <Link href='/search-employee'>
+              <ListItemButton>
+                <ListItemText primary='Cari Karyawan' />
+              </ListItemButton>
+            </Link>
           </List>
           <List>
             {bottomMenu.map((text, index) => (
