@@ -3,6 +3,7 @@ import LayoutMain from "@/components/layouts/main"
 import CustomTable from "@/components/table"
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import EditIcon from '@mui/icons-material/Edit'
+import { useRouter } from "next/router"
 
 const colNames = [
     {
@@ -52,6 +53,12 @@ const dummyData = [
 ]
 
 export default function ApplicantList() {
+    const router = useRouter()
+    
+    const detailBtn = () => {
+        router.push('/applicant-list/detail-applicant')
+    }
+
     const actionBtn = [
         {
             icon: <EditIcon />,
@@ -60,6 +67,7 @@ export default function ApplicantList() {
         {
             icon: <VisibilityIcon />,
             id: 'detail',
+            function: detailBtn
         }
     ]
 
