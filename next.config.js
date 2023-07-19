@@ -8,6 +8,9 @@ const nextConfig = {
     prependData: `@import "@/styles/utils/_variables.scss";
     `,
   },
+  // images: {
+  //   unoptimized: true
+  // }
 }
 
 module.exports = nextConfig
