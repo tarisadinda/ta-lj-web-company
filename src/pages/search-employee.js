@@ -1,6 +1,8 @@
+import cn from 'classnames'
 import SearchFilter from '@/components/dashboard/search-filter'
 import SearchInput from '@/components/dashboard/search-input'
 import LayoutMain from '@/components/layouts/main'
+import EmployeeCard from '@/components/search-employee/employee-card'
 import styles from '@/styles/pages/SearchEmployee.module.scss'
 
 export default function SearchEmployee() {
@@ -18,6 +20,10 @@ export default function SearchEmployee() {
             </div>
             <div className={styles.rightGrid}>
                 <SearchInput />
+                <div className={cn(styles.listEmployee, 'mt-3')}>
+                    <EmployeeCard />
+                    <EmployeeCard />
+                </div>
             </div>
         </div>
     </>)
