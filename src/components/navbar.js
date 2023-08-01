@@ -69,9 +69,11 @@ export default function Navbar() {
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText primary="Daftar Lowongan" />
-                </ListItemButton>
+                  <Link href='/vacancy-list'>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemText primary="Daftar Lowongan" />
+                    </ListItemButton>
+                  </Link>
                 <ListItemButton sx={{ pl: 4 }}>
                     <ListItemText primary="Kategori" />
                 </ListItemButton>
