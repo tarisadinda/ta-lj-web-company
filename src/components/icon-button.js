@@ -20,7 +20,9 @@ export default function CustomIconButton({icon, text, ...props}) {
             startIcon={icon}
             {...props}
         >
-            {text}
+            <span style={{ fontWeight: '600' }}>
+                {text}
+            </span>
         </IconButtonStyled>
     </>)
 }
