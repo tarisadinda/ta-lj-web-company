@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import DeleteIcon from '@mui/icons-material/Delete';
 import CustomTable from "@/components/table"
+import { useRouter } from "next/router"
 
 const colNames = [
     {
@@ -57,6 +58,8 @@ const dummyData = [
 ]
 
 export default function VacancyList() {
+    const router = useRouter()
+
     const detailBtn = () => {
         console.log('tes')
     }
@@ -78,7 +81,7 @@ export default function VacancyList() {
     ]
 
     const newJobVacancy = () => {
-        console.log('klik')
+        router.push('/add-job-vacancy')
     }
 
     return(<>
