@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { styled } from '@mui/material/styles'
-import styles from '@/styles/components/Table.module.scss'
+import styles from '@/styles/components/common/Table.module.scss'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell, { tableCellClasses } from '@mui/material/TableCell'
@@ -9,6 +9,9 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import IconButton from '@mui/material/IconButton'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
 const CustomTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -31,7 +34,7 @@ const CustomTableRow = styled(TableRow)(({ theme }) => ({
     },
 }))
 
-export default function CustomTable({columns, data, actionButton}) {
+export default function CustomTable({columns, data, idKey, editFunc, deleteFunc}) {
     return(<>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -54,11 +57,21 @@ export default function CustomTable({columns, data, actionButton}) {
                                 ))}
                                 <CustomTableCell>
                                     <div className={styles.actions}>
-                                        {actionButton !== undefined && actionButton.map((btn, index) => (
+                                        {/* {actionButton !== undefined && actionButton.map((btn, index) => (
                                             <IconButton key={index} onClick={() => btn.function(item.id)}>
                                                 {btn.icon}
                                             </IconButton>
-                                        ))}
+                                        ))} */}
+                                        {deleteFunc !== undefined && 
+                                            <IconButton onClick={() => deleteFunc(item[idKey])}>
+                                                <DeleteIcon />
+                                            </IconButton>
+                                        }
+                                        {editFunc !== undefined &&
+                                            <IconButton onClick={() => editFunc(item[idKey])}>
+                                                <EditIcon />
+                                            </IconButton>
+                                        }
                                     </div>
                                 </CustomTableCell>
                             </CustomTableRow>
