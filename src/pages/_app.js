@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import '@/styles/globals.scss'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material/styles'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({
@@ -19,7 +19,9 @@ export default function App({ Component, pageProps }) {
 
   return getLayout(<>
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <StyledEngineProvider injectFirst>
+        <Component {...pageProps} />
+      </StyledEngineProvider>
     </ThemeProvider>
   </>) 
 }
