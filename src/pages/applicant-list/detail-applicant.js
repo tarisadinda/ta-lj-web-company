@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styles from '@/styles/pages/applicant-list/DetailApplicant.module.scss'
 import cn from 'classnames'
-import BlueCard from "@/components/blue-card"
+import BlueCard from "@/components/common/blue-card"
 import LayoutMain from "@/components/layouts/main"
 import { Avatar, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material'
-import { CustomChip } from '@/components/chip'
-import CustomIconButton from '@/components/icon-button'
+import { CustomChip } from '@/components/common/chip'
+import CustomIconButton from '@/components/common/icon-button'
 import CloseIcon from '@mui/icons-material/Close'
 import EditIcon from '@mui/icons-material/Edit'
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile'
