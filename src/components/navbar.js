@@ -17,6 +17,7 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import PersonIcon from '@mui/icons-material/Person'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import Link from 'next/link'
 
 const drawerWidth = 240
@@ -45,6 +46,12 @@ export default function Navbar() {
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
+          <Link href='#' className={styles.link}>
+            <div className={styles.profileBtn}>
+              <AccountCircleIcon sx={{ fontSize: 40 }} />
+              <p className={styles.name}>Admin</p>
+            </div>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -91,18 +98,14 @@ export default function Navbar() {
             </Link>
           </List>
           <List>
-            {bottomMenu.map((text, index) => (
-              <ListItem key={index} disablePadding>
-                <Link href={text.link} className={styles.link}>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            {text.label === 'Logout' ? <LogoutIcon fontSize="small" /> : <PersonIcon fontSize="small" />}
-                        </ListItemIcon>
-                        <ListItemText primary={text.label} />
-                    </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
+            <ListItem disablePadding>
+              <ListItemButton>
+                  <ListItemIcon>
+                      <LogoutIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText primary='Logout' />
+              </ListItemButton>
+            </ListItem>
           </List>
         </Box>
       </Drawer>
