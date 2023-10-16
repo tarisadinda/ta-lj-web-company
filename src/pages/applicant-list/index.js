@@ -1,6 +1,6 @@
 import CountingCard from "@/components/dashboard/counting-card"
 import LayoutMain from "@/components/layouts/main"
-import CustomTable from "@/components/table"
+import CustomTable from "@/components/common/table"
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import EditIcon from '@mui/icons-material/Edit'
 import { useRouter } from "next/router"

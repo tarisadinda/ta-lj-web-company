@@ -1,12 +1,12 @@
 import LayoutMain from '@/components/layouts/main'
 import cn from 'classnames'
 import styles from '@/styles/pages/vacancy-list/VacancyDetail.module.scss'
-import { CustomChip } from '@/components/chip'
-import CustomTable from '@/components/table'
+import { CustomChip } from '@/components/common/chip'
+import CustomTable from '@/components/common/table'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
-import CustomDialog from '@/components/dialog'
+import ModalDialog from '@/components/modal-dialog'
 import React from 'react'
 
 const colNames = [
@@ -59,10 +59,6 @@ export default function VacancyDetail() {
 
     const actionBtn = [
         {
-            icon: <DeleteIcon />,
-            id: 'delete',
-        },
-        {
             icon: <EditIcon />,
             id: 'edit',
             function: editBtn
@@ -92,7 +88,7 @@ export default function VacancyDetail() {
                 data={dummyData}
             />
         </div>
-        <CustomDialog
+        <ModalDialog
             open={openModal}
             title="Edit Status Seleksi"
             handleClose={() => setOpenModal(false)}
