@@ -98,14 +98,16 @@ export default function Navbar() {
             </Link>
           </List>
           <List>
-            <ListItem disablePadding>
-              <ListItemButton>
-                  <ListItemIcon>
-                      <LogoutIcon fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText primary='Logout' />
-              </ListItemButton>
-            </ListItem>
+            <Link href='/login'>
+              <ListItem disablePadding>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <LogoutIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary='Logout' />
+                </ListItemButton>
+              </ListItem>
+            </Link>
           </List>
         </Box>
       </Drawer>
