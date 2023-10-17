@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import '@/styles/globals.scss'
 import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material/styles'
 import { Inter } from 'next/font/google'
+import { Provider } from 'react-redux';
+import { store } from 'src/redux/store';
 
 const inter = Inter({
   weight: ['400', '600', '700', '800'],
@@ -20,7 +22,9 @@ export default function App({ Component, pageProps }) {
   return getLayout(<>
     <ThemeProvider theme={theme}>
       <StyledEngineProvider injectFirst>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </StyledEngineProvider>
     </ThemeProvider>
   </>) 
