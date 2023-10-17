@@ -1,13 +1,13 @@
 import styles from "@/styles/pages/VacancyList.module.scss"
 import cn from 'classnames'
-import BlueCard from "@/components/blue-card"
+import BlueCard from "@/components/common/blue-card"
 import LayoutMain from "@/components/layouts/main"
-import CustomIconButton from "@/components/icon-button"
+import CustomIconButton from "@/components/common/icon-button"
 import AddIcon from '@mui/icons-material/Add'
 import EditIcon from '@mui/icons-material/Edit'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import DeleteIcon from '@mui/icons-material/Delete';
-import CustomTable from "@/components/table"
+import CustomTable from "@/components/common/table"
 import { useRouter } from "next/router"
 
 const colNames = [
@@ -60,28 +60,20 @@ const dummyData = [
 export default function VacancyList() {
     const router = useRouter()
 
-    const detailBtn = () => {
-        console.log('tes')
+    const detailBtn = (id) => {
+        console.log(id)
     }
-
-    const actionBtn = [
-        {
-            icon: <DeleteIcon />,
-            id: 'delete'
-        },
-        {
-            icon: <EditIcon />,
-            id: 'edit'
-        },
-        {
-            icon: <VisibilityIcon />,
-            id: 'detail',
-            function: detailBtn
-        },
-    ]
 
     const newJobVacancy = () => {
         router.push('/add-job-vacancy')
+    }
+
+    const deleteJob = (id) =>{
+        console.log(id)
+    }
+
+    const editJob = (id) => {
+        console.log(id)
     }
 
     return(<>
@@ -105,8 +97,11 @@ export default function VacancyList() {
             <div className="mt-3">
                 <CustomTable 
                     columns={colNames}
-                    actionButton={actionBtn}
+                    idKey='id'
                     data={dummyData}
+                    deleteFunc={deleteJob}
+                    detailFunc={detailBtn}
+                    editFunc={editJob}
                 />
             </div>
         </div>
