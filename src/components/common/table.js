@@ -34,7 +34,7 @@ const CustomTableRow = styled(TableRow)(({ theme }) => ({
     },
 }))
 
-export default function CustomTable({columns, data, idKey, editFunc, deleteFunc}) {
+export default function CustomTable({columns, data, idKey, editFunc, deleteFunc, detailFunc}) {
     return(<>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -57,11 +57,6 @@ export default function CustomTable({columns, data, idKey, editFunc, deleteFunc}
                                 ))}
                                 <CustomTableCell>
                                     <div className={styles.actions}>
-                                        {/* {actionButton !== undefined && actionButton.map((btn, index) => (
-                                            <IconButton key={index} onClick={() => btn.function(item.id)}>
-                                                {btn.icon}
-                                            </IconButton>
-                                        ))} */}
                                         {deleteFunc !== undefined && 
                                             <IconButton onClick={() => deleteFunc(item[idKey])}>
                                                 <DeleteIcon />
@@ -70,6 +65,11 @@ export default function CustomTable({columns, data, idKey, editFunc, deleteFunc}
                                         {editFunc !== undefined &&
                                             <IconButton onClick={() => editFunc(item[idKey])}>
                                                 <EditIcon />
+                                            </IconButton>
+                                        }
+                                        {detailFunc !== undefined &&
+                                            <IconButton onClick={() => detailFunc(item[idKey])}>
+                                                <VisibilityIcon />
                                             </IconButton>
                                         }
                                     </div>
