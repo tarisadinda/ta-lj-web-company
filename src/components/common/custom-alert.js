@@ -14,7 +14,7 @@ export default function CustomAlert({ open, onClose, duration, severity, text })
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
             <Alert onClose={onClose} sx={{ width: '100%' }} severity={severity}>
-                {text}
+                <span style={{ textTransform: 'capitalize' }}>{text}</span>
             </Alert>
         </Snackbar>
     </>)
