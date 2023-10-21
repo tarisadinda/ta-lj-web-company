@@ -22,25 +22,8 @@ import Link from 'next/link'
 
 const drawerWidth = 240
 
-const bottomMenu = [
-  {
-      label: 'Profil Company',
-      link: '#'
-  },
-  {
-      label: 'Logout',
-      link: '/login'
-  }
-]
 
 export default function Navbar() {
-  const [activeIndex, setActiveIndex] = React.useState(null)
-  const [open, setOpen] = React.useState(false)
-
-  const handleClick = () => {
-    setOpen(!open)
-  }
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -49,7 +32,7 @@ export default function Navbar() {
           <Link href='#' className={styles.link}>
             <div className={styles.profileBtn}>
               <AccountCircleIcon sx={{ fontSize: 40 }} />
-              <p className={styles.name}>Admin</p>
+              <p className={styles.name}>PT Perusahaan</p>
             </div>
           </Link>
         </Toolbar>
@@ -70,22 +53,11 @@ export default function Navbar() {
                 <ListItemText primary='Dashboard' />
               </ListItemButton>
             </Link>
-            <ListItemButton onClick={handleClick}>
-                <ListItemText primary="Pekerjaan" />
-                {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <Link href='/vacancy-list'>
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemText primary="Daftar Lowongan" />
-                    </ListItemButton>
-                  </Link>
-                <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText primary="Kategori" />
-                </ListItemButton>
-                </List>
-            </Collapse>
+            <Link href='/vacancy-list'>
+              <ListItemButton>
+                <ListItemText primary='Daftar Lowongan' />
+              </ListItemButton>
+            </Link>
             <Link href='/applicant-list'>
               <ListItemButton>
                 <ListItemText primary='Data Pelamar' />
