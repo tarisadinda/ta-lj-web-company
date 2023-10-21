@@ -54,22 +54,14 @@ const dummyData = [
 
 export default function ApplicantList() {
     const router = useRouter()
-    
-    const detailBtn = () => {
+
+    const detailData = (id) => {
         router.push('/applicant-list/detail-applicant')
     }
 
-    const actionBtn = [
-        {
-            icon: <EditIcon />,
-            id: 'edit'
-        },
-        {
-            icon: <VisibilityIcon />,
-            id: 'detail',
-            function: detailBtn
-        }
-    ]
+    const deleteData = (id) => {
+        // console.log(id)
+    }
 
     return(<>
         <div className="d-flex gap-3 mb-5">
@@ -80,8 +72,10 @@ export default function ApplicantList() {
         <div>
             <CustomTable 
                 columns={colNames}
-                actionButton={actionBtn}
                 data={dummyData}
+                idKey='id'
+                detailFunc={detailData}
+                deleteFunc={deleteData}
             />
         </div>
     </>)

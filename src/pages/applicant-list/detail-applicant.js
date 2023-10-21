@@ -3,62 +3,25 @@ import styles from '@/styles/pages/applicant-list/DetailApplicant.module.scss'
 import cn from 'classnames'
 import BlueCard from "@/components/common/blue-card"
 import LayoutMain from "@/components/layouts/main"
-import { Avatar, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material'
+import { Avatar, } from '@mui/material'
 import { CustomChip } from '@/components/common/chip'
 import CustomIconButton from '@/components/common/icon-button'
-import CloseIcon from '@mui/icons-material/Close'
 import EditIcon from '@mui/icons-material/Edit'
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile'
+import { useDispatch, useSelector } from 'react-redux'
+import ModalEditStatus from '@/components/modal/edit-application-status'
+import { openModal, setOpenModal } from 'src/redux/slices/modalSlice'
 
-const ModalEditStatus = ({open, handleClose}) => {
-    return(<>
-        <Dialog 
-            open={open}
-            handleClose={handleClose}
-            PaperProps={{
-                sx: {
-                    width: '574px',
-                    height: 'max-content',
-                    borderRadius: '7px'
-                }
-            }}
-        >
-            <DialogTitle className={styles.title}>
-                <span className={styles.modalTitle}><b>Edit Status Lamaran</b></span>
-                <IconButton 
-                    onClick={handleClose}
-                    sx={{
-                        color: (theme) => theme.palette.grey[500],
-                    }}
-                >
-                    <CloseIcon />
-                </IconButton>
-            </DialogTitle>
-            <DialogContent dividers>
-                <p>Status Seleksi</p>
-                <select className="form-select" aria-label="Pilih Status Seleksi">
-                    <option selected>Open this select menu</option>
-                    <option value="1">Dalam Review</option>
-                    <option value="2">Terpilih</option>
-                    <option value="3">Tidak Sesuai</option>
-                </select>
-                <div className='mt-4 d-flex justify-content-end'>
-                    <div className={styles.modalBtn}>
-                        <button className='btn btn-ghost blue'>Batal</button>
-                        <button className='btn btn-primary blue'>Update</button>
-                    </div>
-                </div>
-            </DialogContent>
-        </Dialog>
-    </>)
-}
 export default function DetailApplicant() {
-    const [openModalStatus, setOpenModalStatus] = React.useState(false)
+    const dispatch = useDispatch()
+
+    const seeAlert = useSelector(openModal)
 
     const handleStatusModal = () => {
-        setOpenModalStatus(!openModalStatus)
+        dispatch(setOpenModal(true))
     }
 
+    console.log(seeAlert)
     return(<>
     <div className={styles.row}>
         <div>
@@ -103,7 +66,7 @@ export default function DetailApplicant() {
             <p>Fulltime - WFO</p>
         </BlueCard>
     </div>
-    <ModalEditStatus open={openModalStatus} handleClose={handleStatusModal} />
+    <ModalEditStatus open={seeAlert} handleClose={() => dispatch(setOpenModal(false))} />
     </>)
 }
 
