@@ -1,9 +1,9 @@
 import CountingCard from "@/components/dashboard/counting-card"
 import LayoutMain from "@/components/layouts/main"
 import CustomTable from "@/components/common/table"
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import EditIcon from '@mui/icons-material/Edit'
 import { useRouter } from "next/router"
+import ConfirmDeleteModal from "@/components/common/confirm-delete"
+import React from "react"
 
 const colNames = [
     {
@@ -55,12 +55,20 @@ const dummyData = [
 export default function ApplicantList() {
     const router = useRouter()
 
+    const [isDeleteModal, setIsDeleteModal] = React.useState(false)
+
     const detailData = (id) => {
         router.push('/applicant-list/detail-applicant')
     }
 
     const deleteData = (id) => {
-        // console.log(id)
+        console.log(id)
+        setIsDeleteModal(true)
+    }
+
+    const actionDelete = () => {
+        console.log('del')
+        setIsDeleteModal(false)
     }
 
     return(<>
@@ -78,6 +86,12 @@ export default function ApplicantList() {
                 deleteFunc={deleteData}
             />
         </div>
+        <ConfirmDeleteModal
+            open={isDeleteModal}
+            onClose={() => setIsDeleteModal(false)}
+            title='Apakah anda yakin untuk menghapus data pelamar ini?'
+            delFunc={actionDelete}
+        />
     </>)
 }
 
