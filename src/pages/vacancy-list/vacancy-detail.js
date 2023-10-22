@@ -5,8 +5,6 @@ import { CustomChip } from '@/components/common/chip'
 import CustomTable from '@/components/common/table'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-import ModalDialog from '@/components/modal-dialog'
 import React from 'react'
 
 const colNames = [
@@ -88,11 +86,6 @@ export default function VacancyDetail() {
                 data={dummyData}
             />
         </div>
-        <ModalDialog
-            open={openModal}
-            title="Edit Status Seleksi"
-            handleClose={() => setOpenModal(false)}
-        />
     </>)
 }
 
