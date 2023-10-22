@@ -1,11 +1,9 @@
 import React from 'react'
-import { Avatar, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material'
 import styles from '@/styles/components/modals/EditApplicationStatus.module.scss'
-import cn from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { openAlert, setOpenAlert } from 'src/redux/slices/alertSlice'
-import CloseIcon from '@mui/icons-material/Close'
 import CustomAlert from '../common/custom-alert'
+import FrameModal from '../common/frame-modal'
 
 const ModalEditStatus = ({open, handleClose}) => {
     const dispatch = useDispatch()
@@ -13,29 +11,12 @@ const ModalEditStatus = ({open, handleClose}) => {
     const isOpenAlert = useSelector(openAlert)
 
     return(<>
-        <Dialog 
+        <FrameModal
             open={open}
             handleClose={handleClose}
-            PaperProps={{
-                sx: {
-                    width: '574px',
-                    height: 'max-content',
-                    borderRadius: '7px'
-                }
-            }}
+            title='Edit Status Lamaran'
         >
-            <DialogTitle className={styles.title}>
-                <span className={styles.modalTitle}><b>Edit Status Lamaran</b></span>
-                <IconButton 
-                    onClick={handleClose}
-                    sx={{
-                        color: (theme) => theme.palette.grey[500],
-                    }}
-                >
-                    <CloseIcon />
-                </IconButton>
-            </DialogTitle>
-            <DialogContent dividers>
+            <div>
                 <p>Status Seleksi</p>
                 <select className="form-select" aria-label="Pilih Status Seleksi">
                     <option selected>Open this select menu</option>
@@ -49,8 +30,8 @@ const ModalEditStatus = ({open, handleClose}) => {
                         <button onClick={() => { dispatch(setOpenAlert(true)); handleClose() }} className='btn btn-primary blue'>Update</button>
                     </div>
                 </div>
-            </DialogContent>
-        </Dialog>
+            </div>
+        </FrameModal>
         <CustomAlert 
             open={isOpenAlert} 
             onClose={() => dispatch(setOpenAlert(false))}
