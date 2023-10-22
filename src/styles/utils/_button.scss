@@ -18,6 +18,17 @@
         }
     }
 
+    &.red {
+        color: $light;
+        background-color: $red;
+        border: 0px;
+
+        &:hover, &:active {
+            border: 0px;
+            background-color: $dark-red;
+        }
+    }
+
     &.disabled {
         color: #676767;
         background-color: #ADADAD;
@@ -43,6 +54,20 @@
         background-color: transparent;
         border: none;
         box-shadow: inset 0px 0px 0px 2px #C3C3C3;
+    }
+}
+
+.btn-outline {
+    @extend %button-shape;
+    
+    &.gray {
+        color: $dark;
+        background-color: $light;
+        border-color: $dark;
+
+        &:hover, &:active {
+            background-color: $gray-4;
+        }
     }
 }
 
