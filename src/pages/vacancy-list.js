@@ -59,6 +59,7 @@ export default function VacancyList() {
 
     const detailBtn = (id) => {
         console.log(id)
+        router.push('/vacancy-list/vacancy-detail')
     }
 
     const newJobVacancy = () => {
@@ -70,6 +71,7 @@ export default function VacancyList() {
     }
 
     const editJob = (id) => {
+        router.push('/edit-job-vacancy')
         console.log(id)
     }
 
