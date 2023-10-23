@@ -45,7 +45,8 @@
         box-shadow: inset 0px 0px 0px 1px $blue-1;
 
         &:hover, &:active {
-            background-color: $blue-1 !important;
+            color: $blue-1;
+            background-color: $blue-3;
         }
     }
 
