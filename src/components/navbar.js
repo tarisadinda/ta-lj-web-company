@@ -28,13 +28,13 @@ export default function Navbar() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar>
-          <Link href='#' className={styles.link}>
-            <div className={styles.profileBtn}>
+        <Toolbar className={styles.topBtn}>
+          <div>
+            <Link href='/company-profile' className={styles.link}>
               <AccountCircleIcon sx={{ fontSize: 40 }} />
               <p className={styles.name}>PT Perusahaan</p>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
