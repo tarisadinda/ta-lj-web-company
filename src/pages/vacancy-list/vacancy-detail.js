@@ -48,13 +48,7 @@ const dummyData = [
 
 export default function VacancyDetail() {
     const router = useRouter()
-    const [openModal, setOpenModal] = React.useState(false)
-
-    const editBtn = () => {
-        console.log('klik')
-        // setOpenModal(true)
-    }
-
+    
     const detailBtn = () => {
         router.push('/applicant-list/detail-applicant')
     } 
@@ -77,7 +71,6 @@ export default function VacancyDetail() {
                 columns={colNames}
                 data={dummyData}
                 detailFunc={detailBtn}
-                deleteFunc={editBtn}
             />
         </div>
     </>)
