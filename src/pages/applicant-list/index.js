@@ -67,10 +67,10 @@ export default function ApplicantList() {
     }
 
     const actionDelete = () => {
-        console.log('del')
+        console.log('get api delete')
         setIsDeleteModal(false)
     }
-
+    
     return(<>
         <div className="d-flex gap-3 mb-5">
             <CountingCard total='12' title='Pelamar baru untuk direview' />
