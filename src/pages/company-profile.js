@@ -4,8 +4,15 @@ import LayoutMain from "@/components/layouts/main"
 import { Avatar } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit'
 import cn from 'classnames'
+import { useRouter } from "next/router"
 
 export default function CompanyProfile() {
+    const router = useRouter()
+
+    const editBtn = () => {
+        router.push('/edit-company-profile')
+    }
+
     return(<>
         <div>
             <h3><b>Profil Perusahaan</b></h3>
@@ -14,6 +21,7 @@ export default function CompanyProfile() {
                     <Avatar sx={{ width: 120, height: 120 }} />
                     <CustomIconButton 
                         text="Edit Profil"
+                        onClick={editBtn}
                         icon={<EditIcon />}
                         className={cn(styles.editBtn, "btn btn-primary blue")}
                     />

@@ -3,9 +3,8 @@ import cn from 'classnames'
 import styles from '@/styles/pages/vacancy-list/VacancyDetail.module.scss'
 import { CustomChip } from '@/components/common/chip'
 import CustomTable from '@/components/common/table'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import EditIcon from '@mui/icons-material/Edit'
 import React from 'react'
+import { useRouter } from 'next/router'
 
 const colNames = [
     {
@@ -48,24 +47,17 @@ const dummyData = [
 ]
 
 export default function VacancyDetail() {
+    const router = useRouter()
     const [openModal, setOpenModal] = React.useState(false)
 
     const editBtn = () => {
         console.log('klik')
-        setOpenModal(true)
+        // setOpenModal(true)
     }
 
-    const actionBtn = [
-        {
-            icon: <EditIcon />,
-            id: 'edit',
-            function: editBtn
-        },
-        {
-            icon: <VisibilityIcon />,
-            id: 'detail',
-        },
-    ]
+    const detailBtn = () => {
+        router.push('/applicant-list/detail-applicant')
+    } 
 
     return(<>
         <div>
@@ -74,6 +66,7 @@ export default function VacancyDetail() {
                 <CustomChip label="Lowongan Dibuka" bgcolor='#1C55FF'  />
             </div>
             <p className={cn(styles.date, 'mb-0')}>Lowongan dibuka: 4 September 2022</p>
+            <p className={cn(styles.date, 'mb-0')}>Lowongan ditutup: 10 Oktober 2022</p>
         </div>
         <div className='mt-4'>
             <p className='mb-2'>Teknologi</p>
@@ -82,8 +75,9 @@ export default function VacancyDetail() {
         <div>
             <CustomTable 
                 columns={colNames}
-                actionButton={actionBtn}
                 data={dummyData}
+                detailFunc={detailBtn}
+                deleteFunc={editBtn}
             />
         </div>
     </>)
